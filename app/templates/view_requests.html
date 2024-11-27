@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>Received Requests</h2>
+{% endblock %}
+
+{% block content %}
+
+{% for req in requests %}
+<div>
+    <p><strong>From:</strong> {{ req.name }} ({{ req.email }})</p>
+    <p><strong>Message:</strong> {{ req.message or 'No message provided.' }}</p>
+    <p><strong>Resume:</strong> 
+        {% if req.resume %}
+        <a href="{{ url_for('collab.download_resume', filename=req.resume) }}">Download</a>
+        {% else %}
+        Not provided
+        {% endif %}
+    </p>
+    <p><strong>Status:</strong> {{ req.status }}</p>
+    <form method="POST" action="{{ url_for('collab.update_request', request_id=req.id, status='Accepted') }}">
+        <button type="submit">Accept</button>
+    </form>
+    <form method="POST" action="{{ url_for('collab.update_request', request_id=req.id, status='Declined') }}">
+        <button type="submit">Decline</button>
+    </form>
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

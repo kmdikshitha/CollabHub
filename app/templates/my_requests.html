@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>My Requests</h2>
+{% endblock %}
+
+{% block content %}
+{% for req in requests %}
+<div>
+    <p><strong>To:</strong> {{ req.receiver.user_name }}</p>
+    <p><strong>Message:</strong> {{ req.message or 'No message provided.' }}</p>
+    <p><strong>Status:</strong> {{ req.status }}</p>
+</div>
+<hr>
+{% endfor %}
+{% endblock %}

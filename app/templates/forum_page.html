@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>Forum</h2>
+{% endblock %}
+
+{% block content %}
+
+<a href="{{ url_for('forum.create_post') }}" class="btn btn-primary">Create New Post</a>
+<div>
+    {% for post_data in posts %}
+<div class="forum-post">
+    <h3>{{ post_data.post.title }}</h3>
+    <p><strong>Posted by:</strong> {{ post_data.user_name }} on {{ post_data.post.time_stamp.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+    <p>{{ post_data.post.body }}</p>
+    <hr>
+
+    <h5>Comments:</h5>
+    {% for comment in post_data.comments %}
+    <p>{{ comment.content }} - <small>{{ comment.user_name }} on {{ comment.time_stamp.strftime('%Y-%m-%d %H:%M:%S') }}</small></p>
+    {% endfor %}
+        <form method="POST" action="{{ url_for('forum.add_comment', post_id=post_data.post.id) }}">
+            <textarea name="content" rows="2" placeholder="Add a comment"></textarea>
+            <button type="submit" class="btn btn-secondary comment-button">Comment</button>
+        </form>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+

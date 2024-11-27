@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>CollabHub</h2>
+{% endblock %}
+
+{% block content %}
+<p>Logged in by: {{ user_name }}</p>
+
+<nav>
+    <a href="{{ url_for('main.create_profile') }}">Your Profile</a>
+    <a href="{{ url_for('main.view_profiles') }}">View Profiles</a>
+    <a href="{{ url_for('forum.forum_page') }}">Forum/Discussion</a>
+    {% if user_role == 'teacher/professor' %}
+        <a href="{{ url_for('collab.view_requests') }}">View Requests</a>
+    {% elif user_role == 'student' %}
+        <a href="{{ url_for('collab.my_requests') }}">My Requests</a>
+    {% endif %}
+</nav>
+{% endblock %}

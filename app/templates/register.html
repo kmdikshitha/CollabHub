@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>Register</h2>
+{% endblock %}
+
+{% block content %}
+
+<form method = "POST">
+    {{ form.hidden_tag() }}
+    {{ form.email.label }} {{ form.email(size=32) }}<br>
+    {{ form.user_name.label }} {{ form.user_name(size=32) }}<br>
+    {{ form.password.label }} {{ form.password(size=32) }}<br>
+    {{ form.confirm_password.label }} {{ form.confirm_password(size=32) }}<br>
+    {{ form.role.label }} {{ form.role(size=32) }}<br>
+    {{ form.department.label }} {{ form.department(size=32) }}<br>
+    {{ form.institution.label }} {{ form.institution(size=32) }}<br>
+    {{ form.submit() }}
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>All Profiles</h2>
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <form method="GET" action="{{ url_for('main.view_profiles') }}">
+        <input type="text" name="search" placeholder="Search profiles" value="{{ request.args.get('search', '') }}">
+        <button type="submit">Search</button>
+    </form>
+    {% for profile in profiles %}
+    <div class="profile-card">
+        <h3>{{ profile.name }}</h3>
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Bio:</strong> {{ profile.bio }}</p>
+        <p><strong>Research Areas:</strong> {{ profile.research_areas }}</p>
+        <p><strong>Publications:</strong> {{ profile.publications }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        
+        <!-- Request Collaboration Button -->
+        <div class="collab-button">
+            <a href="{{ url_for('collab.create_request', receiver_id=profile.user_id) }}" class="btn btn-primary">
+                Request Collaboration
+            </a>
+        </div> 
+
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+{% endblock %}
+

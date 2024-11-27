@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>Request Collaboration</h2>
+{% endblock %}
+
+{% block content %}
+<p>Requesting collaboration with: {{ professor.user_name }}</p>
+<div class="form">
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(size=32) }}<br>
+        {{ form.email.label }} {{ form.email(size=32) }}<br>
+        {{ form.resume.label }} {{ form.resume() }}<br>
+        {{ form.message.label }} {{ form.message(rows=3, cols=40) }}<br>
+        {{ form.submit() }}
+    </form>
+</div>
+{% endblock %}

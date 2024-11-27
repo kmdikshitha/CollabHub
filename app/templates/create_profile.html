@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h2>Create or Edit Profile</h2>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    <div class="form">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(size=32) }}<br>
+        {{ form.email.label }} {{ form.email(size=32) }}<br>
+        {{ form.bio.label }} {{ form.bio(rows=5, cols=40) }}<br>
+        {{ form.research_areas.label }} {{ form.research_areas(rows=3, cols=40) }}<br>
+        {{ form.publications.label }} {{ form.publications(rows=3, cols=40) }}<br>
+        {{ form.location.label }} {{ form.location(size=32) }}<br>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}
