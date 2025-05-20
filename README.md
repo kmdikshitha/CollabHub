@@ -1,49 +1,93 @@
-Universities thrive on collaboration, innovation, and mutual respect. However, the challenges of indiscriminate communication with faculty, lack of streamlined opportunities for research positions, and reputation concerns call for a modern solution: the Research Collaboration Portal
+# Research Collaboration Portal
 
-Project Flow:
-research_portal/
-├── app/
-│   ├── __init__.py        # App initialization
-│   ├── routes.py          # Main routes for pages
-│   ├── auth_routes.py     # Authentication routes (register, login, logout)
-│   ├── profile_routes.py  # Profile management routes
-│   ├── forum_routes.py    # Forum and discussion routes
-│   ├── models.py          # SQLAlchemy models for database tables
-│   ├── forms.py           # Flask-WTF forms for user input
-│   ├── email.py           # Flask-Mail setup for notifications
-│   ├── templates/         # HTML templates
-│   ├── static/            # Static assets
-│   │   ├── css/           # Stylesheets
-│   │   └── uploads/       # User-uploaded files
-├── migrations/            # Database migration scripts
-├── config.py              # Configuration settings
-└── README.md              # Documentation
+The Research Collaboration Portal is a web application designed to connect researchers by facilitating idea sharing, discussions, and collaboration. The portal offers various features such as creating profiles, posting research ideas, and interacting with other users' content. It aims to simplify the process of finding Research Assistant (RA) opportunities for college students, reducing the need for cold emails to professors, which can often be inconvenient for both students and faculty.
 
-Features of the project:
+---
 
-Centralized Research Opportunity Hub:
-Students can filter positions based on interests, eligibility, and deadlines.
+## Features
 
-Customized Profiles for Students:
-Students can showcase research interests, skills, and previous work.
+### 1. User Authentication
+- **Sign Up**: Create a new account.
+- **Login/Logout**: Secure access to the portal.
+- **Session Management**: Prevents unauthorized access to restricted pages after logout.
 
-Direct, Transparent Communication:
-Notifications for both parties on application updates or messages.
+### 2. Forum Page
+- **Post Ideas**: Share your research ideas and projects.
+- **Comment Section**: Leave feedback or thoughts on specific posts.
+- **Discussion Threads**: Encourage collaborative discussions.
 
-Collaborative Requests and Approvals:
-Students can request collaboration, attach resumes, and write personalized messages directly on the portal.
-Faculty can review, accept, or reject requests without needing email interactions.
+### 3. Profile Management
+- **View Profiles**: Explore other researchers' profiles.
+- **Search Filter**: Filter profiles based on specific criteria.
 
-Streamlined Application Tracking:
-Students can track applications and feedback for positions.
-Faculty can manage applications efficiently.
+### 4. Search and Filter
+- **Search Bar**: Filter research ideas and profiles easily.
+- **Profile Filter**: Find researchers with similar interests or skills.
 
-Discussion Forum for Networking:
-A platform for students and faculty to discuss research topics, share ideas, and build collaborations.
+---
 
-Event Announcements and Notifications:
-Advertise research conferences, workshops, or events to foster a collaborative academic environment.
+## Set-Up Instructions
 
-Spam-Free Approach:
-No mass emails
-Restores the university’s reputation by promoting professional communication.
+### Prerequisites
+Ensure you have the following installed:
+- Python 3.8 or higher
+- Flask
+- Flask-Login
+- SQLAlchemy
+
+### Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/research-collab-portal.git
+   cd research-collab-portal
+   ```
+
+2. **Set Up a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set Up the Database**:
+   - Initialize the database:
+     ```bash
+     flask db init
+     flask db migrate -m "Initial migration"
+     flask db upgrade
+     ```
+   - This will create the necessary tables in your database.
+
+5. **Run the Application**:
+   ```bash
+   flask run
+   ```
+   - The application will be available at `http://127.0.0.1:5000/`.
+
+6. **(Optional) Set Up Environment Variables**:
+   - Create a `.env` file in the root directory and include:
+     ```env
+     FLASK_APP=run.py
+     FLASK_ENV=development
+     SECRET_KEY=your_secret_key_here
+     DATABASE_URL=sqlite:///your_database_name.db
+     ```
+
+---
+
+## Additional Resources
+
+- [Idea Proposal Presentation](https://docs.google.com/presentation/d/1-Dcvp69AX49po2Vs9qhSzBYI-PbhT1Ha/edit?usp=sharing&ouid=101473124620224721303&rtpof=true&sd=true)
+
+---
+
+## Future Enhancements
+- Real-time notifications for new comments or posts.
+- Integration with academic publication databases (e.g., PubMed, IEEE Xplore).
+- Advanced analytics and insights for researchers.
+- Multi-language support.
+
