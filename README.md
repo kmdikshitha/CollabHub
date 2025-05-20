@@ -38,8 +38,7 @@ Ensure you have the following installed:
 ### Installation
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/research-collab-portal.git
-   cd research-collab-portal
+   git clone https://github.com/kmdikshitha/CollabHub.git
    ```
 
 2. **Set Up a Virtual Environment**:
